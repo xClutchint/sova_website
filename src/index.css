@@ -8,6 +8,12 @@
   body {
     @apply bg-cream text-charcoal font-sans antialiased;
     overflow-x: hidden;
+    cursor: default;
+    caret-color: transparent;
+  }
+
+  input, textarea, [contenteditable] {
+    caret-color: auto;
   }
 }
 

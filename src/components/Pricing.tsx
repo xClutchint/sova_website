@@ -1,155 +1,93 @@
 import { useLayoutEffect, useRef } from 'react';
 import gsap from 'gsap';
+import { Check } from 'lucide-react';
 
 const Pricing = () => {
     const container = useRef<HTMLDivElement>(null);
 
     useLayoutEffect(() => {
         let ctx = gsap.context(() => {
-            const cards = gsap.utils.toArray('.stack-card') as HTMLElement[];
-
-            cards.forEach((card, i) => {
-                if (i === cards.length - 1) return; // Skip last card
-
-                gsap.to(card, {
-                    scrollTrigger: {
-                        trigger: card,
-                        start: 'top top',
-                        end: 'max',
-                        pin: true,
-                        pinSpacing: false,
-                        scrub: true,
-                    },
-                    scale: 0.9,
-                    opacity: 0.5,
-                    filter: 'blur(20px)',
-                    ease: 'none'
-                });
-            });
-
-            // Animations inside artifacts
             // Radar animation
             gsap.to('.radar-ring', { scale: 3, opacity: 0, duration: 2, repeat: -1, stagger: 0.5, ease: 'power2.out' });
-
-            // Graph animation
-            gsap.to('.graph-line', { strokeDashoffset: 0, duration: 2, repeat: -1, ease: 'power1.inOut', yoyo: true });
-
-            // Lock rotation
-            gsap.to('.lock-icon', { rotateY: 360, duration: 8, repeat: -1, ease: 'linear' });
-            gsap.to('.orbit-ring', { rotation: 360, duration: 20, repeat: -1, ease: 'linear', transformOrigin: 'center center' });
-
         }, container);
 
         return () => ctx.revert();
     }, []);
 
     return (
-        <section ref={container} className="relative w-full bg-charcoal text-charcoal pb-40">
+        <section ref={container} id="pricing" className="relative w-full bg-cream text-charcoal py-20 md:py-32">
+            <div className="max-w-5xl mx-auto px-4 md:px-6 w-full">
 
-            {/* Card 1: Free */}
-            <div className="stack-card sticky top-0 w-full h-[100dvh] bg-cream flex items-center justify-center p-6 border-b border-charcoal/10 rounded-b-[3rem] z-10 origin-top">
-                <div className="max-w-5xl w-full grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
-                    <div>
-                        <h3 className="text-lg font-mono text-primary font-bold mb-4 tracking-widest uppercase">Pricing 01</h3>
-                        <h2 className="text-5xl md:text-7xl font-sans font-bold mb-6">Free.</h2>
-                        <p className="text-xl font-sans text-midgrey mb-8 max-w-md leading-relaxed">
-                            Core detection, up to 10 subscriptions, and basic renewal alerts. Essential vigilance for the modern user.
-                        </p>
-                        <div className="space-y-4 font-sans font-medium mb-10">
-                            <div className="flex items-center gap-3"><div className="w-1.5 h-1.5 rounded-full bg-primary" /> Core Detection</div>
-                            <div className="flex items-center gap-3"><div className="w-1.5 h-1.5 rounded-full bg-primary" /> Up to 10 Subscriptions</div>
-                            <div className="flex items-center gap-3"><div className="w-1.5 h-1.5 rounded-full bg-primary" /> Standard Alerts</div>
-                        </div>
-                        <button className="bg-charcoal text-cream px-8 py-4 rounded-full font-sans font-bold text-lg hover:scale-105 transition-transform">
-                            Install Extension
-                        </button>
-                    </div>
-                    <div className="flex justify-center h-full items-center">
-                        {/* Artifact: Pulsing Radar */}
-                        <div className="relative w-64 h-64 flex items-center justify-center bg-white rounded-full shadow-2xl border border-charcoal/5">
-                            <div className="absolute w-2 h-2 bg-primary rounded-full z-10" />
-                            <div className="radar-ring absolute w-16 h-16 border border-primary rounded-full" />
-                            <div className="radar-ring absolute w-16 h-16 border border-primary rounded-full" />
-                            <div className="radar-ring absolute w-16 h-16 border border-primary rounded-full" />
-                        </div>
-                    </div>
+                {/* Header */}
+                <div className="text-center mb-12 md:mb-20">
+                    <span className="text-[10px] md:text-xs font-mono font-bold text-primary tracking-widest mb-4 md:mb-6 px-3 py-1 bg-primary/10 rounded-full border border-primary/20 inline-block">PRICING</span>
+                    <h2 className="text-3xl md:text-6xl lg:text-7xl font-sans font-bold tracking-tight mt-6 mb-4">
+                        Simple. <span className="font-serif italic text-primary font-medium">Generous.</span>
+                    </h2>
+                    <p className="text-base md:text-xl font-sans text-midgrey max-w-xl mx-auto">
+                        Everything SOVA offers, completely free for a limited time.
+                    </p>
                 </div>
-            </div>
 
-            {/* Card 2: Pro */}
-            <div className="stack-card sticky top-0 w-full h-[100dvh] bg-primary text-cream flex items-center justify-center p-6 rounded-t-[3rem] rounded-b-[3rem] shadow-[0_-20px_50px_rgba(0,0,0,0.3)] z-20 origin-top">
-                <div className="max-w-5xl w-full grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
-                    <div>
-                        <h3 className="text-lg font-mono text-charcoal/50 font-bold mb-4 tracking-widest uppercase">Pricing 02</h3>
-                        <h2 className="text-5xl md:text-7xl font-sans font-bold mb-6 text-white">Pro.</h2>
-                        <p className="text-xl font-sans text-cream/80 mb-8 max-w-md leading-relaxed">
-                            Unlimited subscriptions, smart reminders, full spend analytics, and priority support.
-                        </p>
-                        <div className="space-y-4 font-sans font-medium mb-10 opacity-90">
-                            <div className="flex items-center gap-3"><div className="w-1.5 h-1.5 rounded-full bg-white" /> Unlimited Tracking</div>
-                            <div className="flex items-center gap-3"><div className="w-1.5 h-1.5 rounded-full bg-white" /> Smart Reminders</div>
-                            <div className="flex items-center gap-3"><div className="w-1.5 h-1.5 rounded-full bg-white" /> Full Spend Analytics</div>
-                        </div>
-                        {/* Clay button */}
-                        <button className="bg-white/20 backdrop-blur-md text-white border border-white/50 px-8 py-4 rounded-full font-sans font-bold text-lg shadow-[inset_0px_2px_4px_rgba(255,255,255,0.3),_0_10px_20px_rgba(0,0,0,0.2)] hover:bg-white/30 transition-colors">
-                            Upgrade to Pro — $5/mo
-                        </button>
-                    </div>
-                    <div className="flex justify-center h-full items-center">
-                        {/* Artifact: Live spend graph */}
-                        <div className="relative w-full max-w-md h-64 bg-black/20 rounded-3xl p-6 backdrop-blur-sm border border-white/10 flex items-end overflow-hidden">
-                            <svg className="w-full h-full absolute inset-0 preserve-3d" viewBox="0 0 400 200" preserveAspectRatio="none">
-                                <path
-                                    className="graph-line"
-                                    d="M 0 180 C 50 160, 100 170, 150 120 C 200 70, 250 100, 300 50 C 350 0, 400 20, 400 20"
-                                    fill="none"
-                                    stroke="rgba(255,255,255,0.8)"
-                                    strokeWidth="4"
-                                    strokeDasharray="600"
-                                    strokeDashoffset="600"
-                                    style={{ filter: 'drop-shadow(0 0 10px rgba(255,255,255,0.5))' }}
-                                />
-                            </svg>
-                        </div>
-                    </div>
-                </div>
-            </div>
+                {/* Single Pricing Card */}
+                <div className="max-w-lg mx-auto">
+                    <div className="bg-charcoal text-cream rounded-3xl p-8 md:p-12 shadow-2xl relative overflow-hidden">
 
-            {/* Card 3: Lifetime */}
-            <div className="stack-card sticky top-0 w-full h-[100dvh] bg-charcoal text-cream flex items-center justify-center p-6 rounded-t-[3rem] shadow-[0_-20px_50px_rgba(0,0,0,0.5)] z-30 origin-top">
-                <div className="max-w-5xl w-full grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
-                    <div>
-                        <h3 className="text-lg font-mono text-primary font-bold mb-4 tracking-widest uppercase">Pricing 03</h3>
-                        <h2 className="text-5xl md:text-7xl font-sans font-bold mb-6 text-white italic font-serif">Lifetime.</h2>
-                        <p className="text-xl font-sans text-cream/50 mb-8 max-w-md leading-relaxed">
-                            One-time payment. All Pro features forever. Early access to new algorithms. For the committed.
-                        </p>
-                        <div className="space-y-4 font-sans font-medium mb-10 text-cream/70">
-                            <div className="flex items-center gap-3"><div className="w-1.5 h-1.5 rounded-full bg-primary" /> Pay Once, Use Forever</div>
-                            <div className="flex items-center gap-3"><div className="w-1.5 h-1.5 rounded-full bg-primary" /> All Pro Features</div>
-                            <div className="flex items-center gap-3"><div className="w-1.5 h-1.5 rounded-full bg-primary" /> Early Beta Access</div>
-                        </div>
-                        <button className="bg-primary text-white px-8 py-4 rounded-full font-sans font-bold text-lg hover:bg-accent transition-colors shadow-lg shadow-primary/20">
-                            Unlock Lifetime — $99
-                        </button>
-                    </div>
-                    <div className="flex justify-center h-full items-center perspective-[1000px]">
-                        {/* Artifact: Rotating Lock */}
-                        <div className="relative w-64 h-64 flex items-center justify-center">
-                            <svg className="orbit-ring absolute w-full h-full text-white/10" viewBox="0 0 100 100" fill="none" stroke="currentColor" strokeWidth="0.5">
-                                <circle cx="50" cy="50" r="48" strokeDasharray="2 4" />
-                                <circle cx="50" cy="2" r="4" fill="currentColor" />
-                                <circle cx="98" cy="50" r="4" fill="currentColor" />
-                            </svg>
-                            <div className="w-24 h-24 bg-gradient-to-tr from-midgrey to-[#333] rounded-2xl flex items-center justify-center shadow-2xl relative lock-icon transform-style-3d border border-white/5">
-                                <div className="w-10 h-10 border-4 border-white rounded-t-xl absolute -top-8 -z-10 bg-[#1A1A1A]"></div>
-                                <div className="w-4 h-4 bg-white rounded-full"></div>
+                        {/* Background Radar */}
+                        <div className="absolute top-8 right-8 w-32 h-32 opacity-10 pointer-events-none">
+                            <div className="absolute inset-0 flex items-center justify-center">
+                                <div className="absolute w-2 h-2 bg-primary rounded-full z-10" />
+                                <div className="radar-ring absolute w-8 h-8 border border-primary rounded-full" />
+                                <div className="radar-ring absolute w-8 h-8 border border-primary rounded-full" />
+                                <div className="radar-ring absolute w-8 h-8 border border-primary rounded-full" />
                             </div>
                         </div>
+
+                        {/* Badge */}
+                        <div className="inline-flex items-center gap-2 bg-primary/20 text-primary px-3 py-1 rounded-full text-xs font-bold font-mono uppercase tracking-wider mb-6">
+                            <div className="w-1.5 h-1.5 rounded-full bg-primary animate-pulse"></div>
+                            Limited Time
+                        </div>
+
+                        {/* Price */}
+                        <div className="flex items-baseline gap-3 mb-2">
+                            <span className="text-5xl md:text-7xl font-sans font-bold text-white">Free</span>
+                        </div>
+                        <div className="flex items-center gap-2 mb-8">
+                            <span className="text-lg md:text-xl font-mono text-cream/40 line-through">$4.99/mo</span>
+                            <span className="text-sm font-sans text-primary font-bold">$0 while in early access</span>
+                        </div>
+
+                        {/* Features */}
+                        <div className="space-y-4 mb-10">
+                            {[
+                                "Unlimited subscription tracking",
+                                "Automatic checkout detection",
+                                "Smart trial and renewal reminders",
+                                "Full spend analytics dashboard",
+                                "Encrypted cross-device sync",
+                                "Cancellation link finder (300+ services)",
+                            ].map((feature, i) => (
+                                <div key={i} className="flex items-center gap-3 text-sm md:text-base font-sans">
+                                    <div className="w-5 h-5 rounded-full bg-primary/20 flex items-center justify-center shrink-0">
+                                        <Check className="w-3 h-3 text-primary" />
+                                    </div>
+                                    <span className="text-cream/80">{feature}</span>
+                                </div>
+                            ))}
+                        </div>
+
+                        {/* CTA */}
+                        <a href="#/onboarding" className="block w-full bg-primary text-white py-4 rounded-full font-sans font-bold text-lg hover:bg-accent transition-colors shadow-lg shadow-primary/20 text-center no-underline">
+                            Install SOVA for Free
+                        </a>
+
+                        <p className="text-center text-xs text-cream/30 mt-4 font-sans">
+                            No credit card required. Works instantly after install.
+                        </p>
                     </div>
                 </div>
             </div>
-
         </section>
     );
 };

@@ -3,7 +3,7 @@ import gsap from 'gsap';
 
 const DetectionShuffler = () => {
     const [cards, setCards] = useState([
-        { id: 1, text: "Figma Pro Detected — $15/mo", color: "bg-white" },
+        { id: 1, text: "Figma Pro Detected / $15/mo", color: "bg-white" },
         { id: 2, text: "Spotify Renewal in 3 days", color: "bg-cream" },
         { id: 3, text: "Adobe Trial Ending Soon", color: "bg-white" }
     ]);
@@ -57,7 +57,7 @@ const TelemetryTypewriter = () => {
     const phrases = [
         "Checkout page detected...",
         "New subscription found: Notion Pro $16/mo",
-        "Free trial ending in 7 days — reminder set."
+        "Free trial ending in 7 days. Reminder set."
     ];
     const [text, setText] = useState('');
     const [phraseIndex, setPhraseIndex] = useState(0);
@@ -150,7 +150,7 @@ const MockSubscriptionManager = () => {
                     <span className="text-xs text-white/50 font-mono">$22.99</span>
                 </div>
                 <div ref={detailsRef} className="overflow-hidden h-0 opacity-0 px-2 pl-9">
-                    <div className="text-[10px] text-white/40 pb-2">Renews Oct 14 • Virtual Card • Personal</div>
+                    <div className="text-[10px] text-white/40 pb-2">Renews Oct 14 / Personal</div>
                 </div>
 
                 <div className="flex justify-between items-center p-2 opacity-50">
@@ -177,14 +177,14 @@ const MockSubscriptionManager = () => {
 
 const Features = () => {
     return (
-        <section id="features" className="w-full bg-charcoal text-cream py-32 px-6 relative z-10 rounded-t-[3rem] mt-[-3rem]">
+        <section id="features" className="w-full bg-charcoal text-cream py-16 md:py-32 px-4 md:px-6 relative z-10 rounded-t-[2rem] md:rounded-t-[3rem] mt-[-2rem] md:mt-[-3rem]">
             <div className="max-w-7xl mx-auto w-full">
-                <div className="mb-20 max-w-2xl">
-                    <h2 className="text-4xl md:text-5xl font-sans font-bold tracking-tight mb-6">
+                <div className="mb-10 md:mb-20 max-w-2xl">
+                    <h2 className="text-3xl md:text-5xl font-sans font-bold tracking-tight mb-4 md:mb-6">
                         The Precision <span className="font-serif italic text-primary font-medium">Micro-UI</span> Dashboard.
                     </h2>
-                    <p className="text-lg text-cream/70 font-sans leading-relaxed">
-                        SOVA operates as a silent guardian. It replaces standard manual input with interactive functional artifacts that process data locally, offering real-time vigilance.
+                    <p className="text-base md:text-lg text-cream/70 font-sans leading-relaxed">
+                        SOVA runs as a silent layer in your browser. It replaces manual spreadsheet tracking with live, interactive components that process your page data locally and give you real-time awareness.
                     </p>
                 </div>
 
@@ -197,7 +197,7 @@ const Features = () => {
                         <div>
                             <h3 className="text-xl font-bold font-sans mb-2">Automated Detection</h3>
                             <p className="text-sm text-cream/50 font-sans leading-relaxed">
-                                Invisible background scraping recognizes payment gateways and grabs telemetry locally, without integrations.
+                                SOVA's content script scans checkout pages for payment forms and recurring billing signals, all within your browser.
                             </p>
                         </div>
                     </div>
@@ -210,7 +210,7 @@ const Features = () => {
                         <div>
                             <h3 className="text-xl font-bold font-sans mb-2">Live Telemetry</h3>
                             <p className="text-sm text-cream/50 font-sans leading-relaxed">
-                                Watch SOVA parse DOM elements locally. The extension feed acts as a developer-grade log in your browser.
+                                Watch SOVA's detection engine work in real time. The extension feed shows exactly what's being identified as you browse.
                             </p>
                         </div>
                     </div>
@@ -223,7 +223,7 @@ const Features = () => {
                         <div>
                             <h3 className="text-xl font-bold font-sans mb-2">Proactive Management</h3>
                             <p className="text-sm text-cream/50 font-sans leading-relaxed">
-                                From a centralized dashboard, SOVA predicts billing cycles and alerts you before free trials transition silently.
+                                From a centralized dashboard, SOVA tracks your billing cycles and alerts you before free trials convert to paid charges.
                             </p>
                         </div>
                     </div>

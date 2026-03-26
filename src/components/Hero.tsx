@@ -70,25 +70,25 @@ const HorizontalFeatureAccordion = () => {
     const panels = [
         {
             id: 1, height: "90%", title: "Auto-Detection", icon: Radar,
-            description: "SOVA detects subscription pages the moment you land on them — no setup needed.",
+            description: "SOVA detects subscription checkouts the moment you land on them. No setup needed.",
             tags: ["Instant Detection", "Zero Setup"],
             micro: <SonarTicker />
         },
         {
             id: 2, height: "100%", title: "Smart Popup", icon: MousePointer2,
-            description: "A non-intrusive popup appears only when a subscription is detected. One click to track.",
+            description: "A non-intrusive popup appears only when a subscription checkout is detected. One click to track.",
             tags: ["Contextual", "One Click"],
             micro: <SmartPopupTicker />
         },
         {
             id: 3, height: "85%", title: "Spend Dashboard", icon: BarChart2,
-            description: "See every subscription you pay for in one clean dashboard — sorted, categorized, tracked.",
+            description: "See every subscription you pay for in one clean dashboard, sorted, categorized, and tracked.",
             tags: ["Web Dashboard", "Full Overview"],
             micro: <SpendChartTicker />
         },
         {
             id: 4, height: "80%", title: "Trial Reminders", icon: Clock,
-            description: "SOVA reminds you before every free trial ends. Never get charged by surprise again.",
+            description: "SOVA reminds you before every free trial ends so you never get charged by surprise.",
             tags: ["Smart Alerts", "Auto-Tracked"],
             micro: <CountdownTicker />
         }
@@ -220,7 +220,7 @@ const Hero = () => {
     }, []);
 
     return (
-        <section ref={container} className="relative w-full h-[100dvh] flex items-center overflow-hidden pt-20">
+        <section ref={container} className="relative w-full min-h-[100dvh] flex items-center overflow-hidden pt-20">
             {/* Background Motif */}
             <div className="absolute inset-0 z-0 opacity-[0.03] pointer-events-none flex items-center justify-center scale-150 transform-gpu">
                 <svg viewBox="0 0 100 100" className="w-[80vw] h-[80vw] text-charcoal">
@@ -231,30 +231,31 @@ const Hero = () => {
                 </svg>
             </div>
 
-            <div className="max-w-7xl mx-auto w-full px-6 flex flex-col lg:flex-row items-end lg:items-center justify-between z-10 h-full pb-24 lg:pb-0">
+            <div className="max-w-7xl mx-auto w-full px-4 md:px-6 flex flex-col lg:flex-row items-center justify-between z-10 h-full py-16 lg:py-0">
 
                 {/* Left Content */}
-                <div className="flex flex-col items-start w-full lg:w-5/12 mt-auto lg:mt-32 relative z-20">
+                <div className="flex flex-col items-start w-full lg:w-5/12 mt-12 lg:mt-32 relative z-20">
                     <h1 className="flex flex-col gap-1 tracking-tight leading-[0.9]">
-                        <span className="stagger-text text-5xl md:text-7xl font-sans font-bold text-charcoal">
+                        <span className="stagger-text text-4xl md:text-5xl lg:text-7xl font-sans font-bold text-charcoal">
                             Never Miss a
                         </span>
-                        <span className="stagger-text text-6xl md:text-[5.5rem] lg:text-[7rem] font-serif italic text-primary font-medium tracking-tight pr-4 mt-2">
+                        <span className="stagger-text text-[2.75rem] md:text-[5.5rem] lg:text-[7rem] font-serif italic text-primary font-medium tracking-tight pr-4 mt-2">
                             Subscription Again.
                         </span>
                     </h1>
 
-                    <p className="stagger-text mt-8 text-lg md:text-xl font-sans text-midgrey max-w-xl leading-relaxed">
-                        SOVA detects every subscription automatically — no bank details, no manual entry. Just install, browse, and let SOVA do the watching.
+                    <p className="stagger-text mt-6 md:mt-8 text-base md:text-xl font-sans text-midgrey max-w-xl leading-relaxed">
+                        SOVA detects subscriptions automatically as you browse. No bank details, no manual entry. Just install and let SOVA do the watching.
                     </p>
 
-                    <div className="stagger-text mt-10">
-                        <button className="magnetic-btn relative overflow-hidden group bg-primary text-cream px-8 py-4 rounded-full text-lg font-medium font-sans flex items-center gap-3 shadow-[0_10px_30px_rgba(239,68,68,0.2)]">
+                    <div className="stagger-text mt-8 md:mt-10 flex flex-col items-start gap-2">
+                        <a href="#/onboarding" className="magnetic-btn relative overflow-hidden group bg-primary text-cream px-6 md:px-8 py-3.5 md:py-4 rounded-full text-base md:text-lg font-medium font-sans flex items-center gap-3 shadow-[0_10px_30px_rgba(239,68,68,0.2)] no-underline">
                             <span className="relative z-10 flex items-center gap-2">
-                                Try for Free <span className="text-cream/70 text-sm font-normal">— It's Free</span>
+                                Try for Free <span className="text-cream/70 text-sm font-normal hidden sm:inline">/ It's Free</span>
                             </span>
                             <div className="absolute inset-0 h-full w-full bg-accent transform scale-x-0 origin-left group-hover:scale-x-100 transition-transform duration-300 ease-in-out z-0"></div>
-                        </button>
+                        </a>
+                        <span className="text-sm font-mono text-midgrey/60 ml-2"><span className="line-through">$4.99/mo</span> <span className="text-primary font-sans font-semibold not-italic">Free for a limited time</span></span>
                     </div>
                 </div>
 
@@ -263,6 +264,29 @@ const Hero = () => {
                     <div className="w-full -translate-y-[40px] accordion-float-wrapper">
                         <HorizontalFeatureAccordion />
                     </div>
+                </div>
+
+                {/* Mobile Feature Cards */}
+                <div className="flex lg:hidden flex-col gap-4 w-full mt-10 mb-4 stagger-text">
+                    {[
+                        { icon: Radar, title: "Auto-Detection", desc: "Detects subscription checkouts instantly. Zero setup.", color: "bg-primary/10 text-primary" },
+                        { icon: MousePointer2, title: "Smart Popup", desc: "Non-intrusive. One click to track.", color: "bg-primary/10 text-primary" },
+                        { icon: BarChart2, title: "Spend Dashboard", desc: "See every subscription in one clean view.", color: "bg-primary/10 text-primary" },
+                        { icon: Clock, title: "Trial Reminders", desc: "Get alerted before free trials charge you.", color: "bg-primary/10 text-primary" },
+                    ].map((item, i) => {
+                        const Icon = item.icon;
+                        return (
+                            <div key={i} className="flex items-center gap-4 bg-charcoal/[0.03] border border-charcoal/5 rounded-2xl p-4">
+                                <div className={`w-10 h-10 rounded-xl ${item.color} flex items-center justify-center shrink-0`}>
+                                    <Icon className="w-5 h-5" />
+                                </div>
+                                <div>
+                                    <h3 className="font-sans font-bold text-sm text-charcoal">{item.title}</h3>
+                                    <p className="font-sans text-xs text-midgrey mt-0.5">{item.desc}</p>
+                                </div>
+                            </div>
+                        );
+                    })}
                 </div>
 
             </div>

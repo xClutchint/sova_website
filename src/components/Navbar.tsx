@@ -1,9 +1,11 @@
-import { useRef, useLayoutEffect } from 'react';
+import { useRef, useLayoutEffect, useState } from 'react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import { Menu, X } from 'lucide-react';
 
 const Navbar = () => {
     const navRef = useRef<HTMLElement>(null);
+    const [menuOpen, setMenuOpen] = useState(false);
 
     useLayoutEffect(() => {
         let ctx = gsap.context(() => {
@@ -40,12 +42,12 @@ const Navbar = () => {
     }, []);
 
     return (
-        <div className="fixed top-0 left-0 w-full z-50 flex justify-center mt-6 px-4 pointer-events-none">
+        <div className="fixed top-0 left-0 w-full z-50 flex justify-center mt-4 md:mt-6 px-3 md:px-4 pointer-events-none">
             <nav
                 ref={navRef}
                 className="pointer-events-auto flex items-center justify-between w-full max-w-4xl rounded-full border border-transparent transition-all duration-300"
             >
-                <div className="flex items-center gap-2 font-outfit font-bold text-xl tracking-tight">
+                <div className="flex items-center gap-2 font-outfit font-bold text-lg md:text-xl tracking-tight">
                     <div className="w-5 h-5 rounded-full bg-primary relative flex items-center justify-center">
                         <div className="w-1.5 h-1.5 rounded-full bg-cream"></div>
                     </div>
@@ -56,13 +58,37 @@ const Navbar = () => {
                     <a href="#features" className="hover:opacity-100 transition-opacity">Features</a>
                     <a href="#how-it-works" className="hover:opacity-100 transition-opacity">How it Works</a>
                     <a href="#pricing" className="hover:opacity-100 transition-opacity">Pricing</a>
+                    <a href="#/privacy" className="hover:opacity-100 transition-opacity">Privacy</a>
                 </div>
 
-                <button className="relative overflow-hidden group bg-charcoal text-cream px-5 py-2 rounded-full text-sm font-medium font-sans">
-                    <span className="relative z-10">Try for Free</span>
-                    <div className="absolute inset-0 h-full w-full bg-primary transform scale-x-0 origin-left group-hover:scale-x-100 transition-transform duration-300 ease-in-out z-0"></div>
-                </button>
+                <div className="flex items-center gap-3">
+                    <a href="#/onboarding" className="relative overflow-hidden group bg-charcoal text-cream px-4 md:px-5 py-2 rounded-full text-xs md:text-sm font-medium font-sans no-underline">
+                        <span className="relative z-10">Try for Free</span>
+                        <div className="absolute inset-0 h-full w-full bg-primary transform scale-x-0 origin-left group-hover:scale-x-100 transition-transform duration-300 ease-in-out z-0"></div>
+                    </a>
+
+                    {/* Mobile hamburger */}
+                    <button
+                        className="md:hidden w-9 h-9 flex items-center justify-center rounded-full bg-charcoal/5"
+                        onClick={() => setMenuOpen(!menuOpen)}
+                        aria-label="Toggle menu"
+                    >
+                        {menuOpen ? <X className="w-4 h-4" /> : <Menu className="w-4 h-4" />}
+                    </button>
+                </div>
             </nav>
+
+            {/* Mobile menu dropdown */}
+            {menuOpen && (
+                <div className="pointer-events-auto md:hidden absolute top-full mt-2 left-3 right-3 bg-cream/95 backdrop-blur-xl border border-charcoal/10 rounded-2xl p-6 shadow-2xl">
+                    <div className="flex flex-col gap-5 font-sans text-base font-medium">
+                        <a href="#features" className="hover:text-primary transition-colors" onClick={() => setMenuOpen(false)}>Features</a>
+                        <a href="#how-it-works" className="hover:text-primary transition-colors" onClick={() => setMenuOpen(false)}>How it Works</a>
+                        <a href="#pricing" className="hover:text-primary transition-colors" onClick={() => setMenuOpen(false)}>Pricing</a>
+                        <a href="#/privacy" className="hover:text-primary transition-colors" onClick={() => setMenuOpen(false)}>Privacy</a>
+                    </div>
+                </div>
+            )}
         </div>
     );
 };

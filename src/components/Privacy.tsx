@@ -1,14 +1,12 @@
 import { useLayoutEffect, useRef } from 'react';
 import gsap from 'gsap';
-import { Shield, Fingerprint, MousePointer2 } from 'lucide-react';
+import { Shield, Fingerprint, Lock } from 'lucide-react';
 
 const Privacy = () => {
     const container = useRef<HTMLDivElement>(null);
 
     useLayoutEffect(() => {
         let ctx = gsap.context(() => {
-            // Split text reveal approximation since SplitText is a premium plugin
-            // We'll use lines wrapped in spans
             gsap.from('.manifesto-text', {
                 scrollTrigger: {
                     trigger: container.current,
@@ -21,7 +19,6 @@ const Privacy = () => {
                 ease: 'power3.out'
             });
 
-            // Pillars stagger
             gsap.from('.pillar', {
                 scrollTrigger: {
                     trigger: '.pillars-container',
@@ -38,21 +35,21 @@ const Privacy = () => {
     }, []);
 
     return (
-        <section ref={container} className="w-full bg-charcoal text-cream py-32 px-6 flex flex-col items-center justify-center relative z-20 pt-10">
+        <section ref={container} className="w-full bg-charcoal text-cream py-16 md:py-32 px-4 md:px-6 flex flex-col items-center justify-center relative z-20 pt-10">
             <div className="max-w-5xl mx-auto w-full text-center">
-                <h2 className="text-4xl md:text-5xl lg:text-7xl font-sans font-bold tracking-tight leading-tight mb-24 max-w-4xl mx-auto">
+                <h2 className="text-2xl md:text-5xl lg:text-7xl font-sans font-bold tracking-tight leading-tight mb-12 md:mb-24 max-w-4xl mx-auto">
                     <span className="manifesto-text block text-cream/30">Other apps want your bank account.</span>
-                    <span className="manifesto-text block font-serif italic text-white mt-4">SOVA only reads what's already on your screen.</span>
+                    <span className="manifesto-text block font-serif italic text-white mt-3 md:mt-4">SOVA only reads what's already on your screen.</span>
                 </h2>
 
-                <div className="pillars-container grid grid-cols-1 md:grid-cols-3 gap-12 text-left mt-16 max-w-4xl mx-auto">
+                <div className="pillars-container grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-12 text-left mt-8 md:mt-16 max-w-4xl mx-auto">
                     <div className="pillar flex flex-col items-center text-center group">
                         <div className="w-16 h-16 rounded-3xl bg-white/5 border border-white/10 flex items-center justify-center mb-6 text-primary group-hover:scale-110 group-hover:bg-primary/10 transition-all duration-300">
                             <Shield className="w-8 h-8" />
                         </div>
-                        <h3 className="text-xl font-bold font-sans mb-3 text-white">100% Local Processing</h3>
+                        <h3 className="text-xl font-bold font-sans mb-3 text-white">Detection Runs Locally</h3>
                         <p className="text-cream/50 font-sans text-sm leading-relaxed">
-                            Detection models run completely within your browser. Nothing communicates with external servers.
+                            All subscription detection happens entirely in your browser. If you enable cross-device sync, your data is encrypted client-side before it ever leaves your machine.
                         </p>
                     </div>
 
@@ -60,19 +57,19 @@ const Privacy = () => {
                         <div className="w-16 h-16 rounded-3xl bg-white/5 border border-white/10 flex items-center justify-center mb-6 text-primary group-hover:scale-110 group-hover:bg-primary/10 transition-all duration-300">
                             <Fingerprint className="w-8 h-8" />
                         </div>
-                        <h3 className="text-xl font-bold font-sans mb-3 text-white">Zero Financial Data</h3>
+                        <h3 className="text-xl font-bold font-sans mb-3 text-white">Zero Financial Credentials</h3>
                         <p className="text-cream/50 font-sans text-sm leading-relaxed">
-                            We never ask for your plaid credentials or bank statements.
+                            SOVA never asks for bank logins, Plaid access, or credit card info. It works by reading the page you're already on.
                         </p>
                     </div>
 
                     <div className="pillar flex flex-col items-center text-center group">
                         <div className="w-16 h-16 rounded-3xl bg-white/5 border border-white/10 flex items-center justify-center mb-6 text-primary group-hover:scale-110 group-hover:bg-primary/10 transition-all duration-300">
-                            <MousePointer2 className="w-8 h-8" />
+                            <Lock className="w-8 h-8" />
                         </div>
-                        <h3 className="text-xl font-bold font-sans mb-3 text-white">No Manual Input Ever</h3>
+                        <h3 className="text-xl font-bold font-sans mb-3 text-white">Encrypted Sync</h3>
                         <p className="text-cream/50 font-sans text-sm leading-relaxed">
-                            If it’s on your screen, it’s tracked. Sit back and let algorithms manage the spreadsheet.
+                            Cross-device sync uses AES-256 encryption. Your data is encrypted before upload and deleted from the cloud after download. We can't read it.
                         </p>
                     </div>
                 </div>

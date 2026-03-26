@@ -10,7 +10,7 @@ gsap.registerPlugin(ScrollTrigger);
 const Artifacts = [
     // Step 1: Install
     ({ progress }: { progress: number }) => (
-        <div className="w-[320px] bg-white/5 backdrop-blur-xl border border-white/10 rounded-2xl p-6 shadow-2xl flex flex-col items-center">
+        <div className="w-full max-w-[320px] bg-white/5 backdrop-blur-xl border border-white/10 rounded-2xl p-4 md:p-6 shadow-2xl flex flex-col items-center">
             <Chrome className="w-12 h-12 text-cream/80 mb-4" />
             <h3 className="text-xl font-sans font-bold text-cream mb-1">SOVA</h3>
             <p className="text-sm font-sans text-cream/50 mb-6">Subscription Intelligence</p>
@@ -31,7 +31,7 @@ const Artifacts = [
     ),
     // Step 2: Detect
     ({ progress }: { progress: number }) => (
-        <div className="w-[480px] h-[300px] bg-charcoal/50 rounded-lg border border-white/10 shadow-2xl overflow-hidden flex flex-col relative">
+        <div className="w-full max-w-[480px] h-[250px] md:h-[300px] bg-charcoal/50 rounded-lg border border-white/10 shadow-2xl overflow-hidden flex flex-col relative">
             {/* Mock Header */}
             <div className="h-10 border-b border-white/5 bg-charcoal/80 flex items-center px-4 gap-2">
                 <div className="flex gap-1.5 opacity-50"><div className="w-2.5 h-2.5 rounded-full bg-red-400" /><div className="w-2.5 h-2.5 rounded-full bg-yellow-400" /><div className="w-2.5 h-2.5 rounded-full bg-green-400" /></div>
@@ -58,7 +58,7 @@ const Artifacts = [
     ),
     // Step 3: Popup Appears
     ({ progress }: { progress: number }) => (
-        <div className="w-[300px] bg-white/10 backdrop-blur-xl border border-white/20 shadow-[-10px_-10px_30px_rgba(0,0,0,0.5)] rounded-2xl p-5 relative overflow-hidden">
+        <div className="w-full max-w-[300px] bg-white/10 backdrop-blur-xl border border-white/20 shadow-[-10px_-10px_30px_rgba(0,0,0,0.5)] rounded-2xl p-4 md:p-5 relative overflow-hidden">
             <p className="text-sm font-sans text-cream/80 font-medium mb-3">Track this subscription?</p>
             <div className="flex justify-between items-end mb-4 bg-charcoal/50 p-3 rounded-lg border border-white/5">
                 <div>
@@ -86,7 +86,7 @@ const Artifacts = [
     ),
     // Step 4: Mini dash
     ({ progress }: { progress: number }) => (
-        <div className="w-[320px] bg-charcoal border border-white/10 rounded-2xl shadow-2xl p-4 flex flex-col gap-2">
+        <div className="w-full max-w-[320px] bg-charcoal border border-white/10 rounded-2xl shadow-2xl p-4 flex flex-col gap-2">
             <h3 className="text-sm font-bold font-sans text-cream mb-2 px-1">Your Subscriptions</h3>
             {[
                 { n: 'Figma', p: '$15.00', d: 'Renews in 12d' },
@@ -113,8 +113,8 @@ const Artifacts = [
     ),
     // Step 5: Web dash
     ({ progress }: { progress: number }) => (
-        <div className="w-[600px] h-[340px] bg-charcoal rounded-xl border border-white/10 shadow-2xl flex overflow-hidden">
-            <div className="w-40 bg-[#141414] border-r border-white/5 p-4 flex flex-col gap-2">
+        <div className="w-full max-w-[600px] h-[280px] md:h-[340px] bg-charcoal rounded-xl border border-white/10 shadow-2xl flex overflow-hidden">
+            <div className="w-24 md:w-40 bg-[#141414] border-r border-white/5 p-3 md:p-4 flex flex-col gap-2">
                 <div className="w-16 h-4 bg-white/20 rounded mb-4"></div>
                 <div className="w-full h-8 bg-white/10 rounded"></div>
                 <div className="w-full h-8 bg-white/5 rounded"></div>
@@ -146,19 +146,19 @@ const Artifacts = [
     // Step 6: Reminders
     ({ progress }: { progress: number }) => (
         <div className="flex flex-col gap-4 items-center">
-            <div className={clsx("w-[280px] bg-white/5 backdrop-blur-xl border-l-[3px] border-l-primary border-y border-r border-y-white/10 border-r-white/10 shadow-lg p-4 rounded-r-2xl rounded-l-md transition-all duration-700 ease-out", progress > 0.05 ? "opacity-100 translate-y-0" : "opacity-0 -translate-y-10")}>
+            <div className={clsx("w-full max-w-[280px] bg-white/5 backdrop-blur-xl border-l-[3px] border-l-primary border-y border-r border-y-white/10 border-r-white/10 shadow-lg p-4 rounded-r-2xl rounded-l-md transition-all duration-700 ease-out", progress > 0.05 ? "opacity-100 translate-y-0" : "opacity-0 -translate-y-10")}>
                 <div className="flex items-center gap-2 mb-1">
                     <Bell className="w-3 h-3 text-primary animate-[bounceIn_1s_cubic-bezier(0.34,1.56,0.64,1)]" />
                     <span className="text-[10px] uppercase font-bold text-primary">SOVA Alert</span>
                 </div>
                 <p className="text-xs font-sans text-cream/90 font-medium">Your <span className="font-bold">Adobe</span> trial ends in 2 days.</p>
             </div>
-            <div className={clsx("w-[280px] bg-white/5 backdrop-blur-xl border-l-[3px] border-l-[#F5F2EC] border-y border-r border-y-white/10 border-r-white/10 shadow-lg p-4 rounded-r-2xl rounded-l-md transition-all duration-700 delay-100 ease-out", progress > 0.2 ? "opacity-100 translate-y-0" : "opacity-0 -translate-y-10")}>
+            <div className={clsx("w-full max-w-[280px] bg-white/5 backdrop-blur-xl border-l-[3px] border-l-[#F5F2EC] border-y border-r border-y-white/10 border-r-white/10 shadow-lg p-4 rounded-r-2xl rounded-l-md transition-all duration-700 delay-100 ease-out", progress > 0.2 ? "opacity-100 translate-y-0" : "opacity-0 -translate-y-10")}>
                 <div className="flex items-center gap-2 mb-1">
                     <CreditCard className="w-3 h-3 text-cream/60" />
                     <span className="text-[10px] uppercase font-bold text-cream/60">Renewal</span>
                 </div>
-                <p className="text-xs font-sans text-cream/90 font-medium"><span className="font-bold">Spotify</span> renews tomorrow — $9.99.</p>
+                <p className="text-xs font-sans text-cream/90 font-medium"><span className="font-bold">Spotify</span> renews tomorrow at $9.99.</p>
             </div>
         </div>
     )
@@ -171,23 +171,23 @@ const RAW_STEPS = [
     },
     {
         headline: "SOVA watches every checkout.",
-        sub: "The moment you land on a subscription or pricing page, SOVA recognizes it instantly — automatically.",
+        sub: "The moment you land on a subscription or pricing page, SOVA recognizes it automatically.",
     },
     {
         headline: "One tap to never forget.",
-        sub: "A clean, non-intrusive popup gives you full control. Confirm and it's tracked forever.",
+        sub: "A clean, non-intrusive popup gives you full control. Confirm and it's tracked.",
     },
     {
         headline: "Your subscriptions. Right in your toolbar.",
-        sub: "Click the SOVA icon anytime to see your full subscription list — without opening a new tab.",
+        sub: "Click the SOVA icon anytime to see your full subscription list without opening a new tab.",
     },
     {
         headline: "The full picture, always.",
-        sub: "Open the SOVA dashboard for deep insights — categorized subscriptions, spend trends, and complete history.",
+        sub: "Open the SOVA dashboard for deep insights: categorized subscriptions, spend trends, and complete history.",
     },
     {
         headline: "Never get charged by surprise.",
-        sub: "SOVA automatically sets reminders for every free trial and renewal. You'll always know before it hits.",
+        sub: "SOVA sets reminders for every free trial and renewal. You'll always know before it hits.",
     }
 ];
 
@@ -223,23 +223,23 @@ const HowItWorks = () => {
         <section ref={containerRef} id="how-it-works" className="relative w-full bg-[#1A1A1A] text-cream">
 
             {/* Header Block Before Steps */}
-            <div className="w-full flex flex-col items-center justify-center pt-32 pb-16 px-6 text-center z-10 relative">
-                <span className="text-xs font-mono font-bold text-primary tracking-widest mb-6 px-3 py-1 bg-primary/10 rounded-full border border-primary/20 shadow-[0_0_15px_rgba(239,68,68,0.2)]">— HOW IT WORKS —</span>
-                <h2 className="text-5xl md:text-6xl lg:text-7xl tracking-tight leading-[1] mb-6 flex flex-col md:flex-row gap-2 md:gap-4 items-center">
+            <div className="w-full flex flex-col items-center justify-center pt-20 md:pt-32 pb-12 md:pb-16 px-4 md:px-6 text-center z-10 relative">
+                <span className="text-[10px] md:text-xs font-mono font-bold text-primary tracking-widest mb-4 md:mb-6 px-3 py-1 bg-primary/10 rounded-full border border-primary/20 shadow-[0_0_15px_rgba(239,68,68,0.2)]">HOW IT WORKS</span>
+                <h2 className="text-3xl md:text-6xl lg:text-7xl tracking-tight leading-[1.1] md:leading-[1] mb-4 md:mb-6 flex flex-col md:flex-row gap-1 md:gap-4 items-center">
                     <span className="font-sans font-bold">From install to</span>
                     <span className="font-serif italic text-primary font-medium pr-2">total clarity.</span>
                 </h2>
-                <p className="text-lg md:text-xl font-sans text-cream/60 max-w-xl">
+                <p className="text-base md:text-xl font-sans text-cream/60 max-w-xl">
                     Six steps. Fully automatic. Zero effort on your part.
                 </p>
             </div>
 
             <div className="relative w-full overflow-visible" style={{ height: `${RAW_STEPS.length * 100}vh` }}>
                 {/* Visual Sticky Container */}
-                <div className="sticky top-0 w-full h-[100dvh] overflow-hidden flex flex-col lg:flex-row max-w-7xl mx-auto px-6">
+                <div className="sticky top-0 w-full h-[100dvh] overflow-hidden flex flex-col lg:flex-row max-w-7xl mx-auto px-4 md:px-6">
 
                     {/* Left Column: Text & Counter */}
-                    <div className="w-full lg:w-5/12 h-1/2 lg:h-full flex flex-col justify-center pr-12 relative z-20">
+                    <div className="w-full lg:w-5/12 h-[45%] lg:h-full flex flex-col justify-center pr-4 md:pr-12 relative z-20">
                         {RAW_STEPS.map((step, i) => {
                             const isActive = activeStep === i;
                             const isPast = activeStep > i;
@@ -264,10 +264,10 @@ const HowItWorks = () => {
                                         </span>
                                     </div>
 
-                                    <h3 className="text-4xl md:text-5xl font-sans font-bold text-cream mb-4 tracking-tight leading-[1.1]">
+                                    <h3 className="text-2xl md:text-4xl lg:text-5xl font-sans font-bold text-cream mb-3 md:mb-4 tracking-tight leading-[1.1]">
                                         {step.headline}
                                     </h3>
-                                    <p className="text-lg font-sans text-cream/60 leading-relaxed mb-8 pr-12">
+                                    <p className="text-sm md:text-lg font-sans text-cream/60 leading-relaxed mb-4 md:mb-8 pr-0 md:pr-12">
                                         {step.sub}
                                     </p>
 
@@ -284,7 +284,7 @@ const HowItWorks = () => {
                     </div>
 
                     {/* Right Column: Visual Artifacts */}
-                    <div className="w-full lg:w-7/12 h-1/2 lg:h-full flex items-center justify-center relative z-10">
+                    <div className="w-full lg:w-7/12 h-[55%] lg:h-full flex items-center justify-center relative z-10 px-2 md:px-0">
                         {RAW_STEPS.map((_, i) => {
                             const isActive = activeStep === i;
                             const isPast = activeStep > i;
