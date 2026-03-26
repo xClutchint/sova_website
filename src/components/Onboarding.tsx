@@ -227,7 +227,7 @@ const Onboarding = () => {
                                 <div className="w-6 h-6 rounded-full bg-primary/20 flex items-center justify-center shrink-0 mt-0.5">
                                     <span className="text-[10px] font-mono font-bold text-primary">1</span>
                                 </div>
-                                <p className="text-sm text-cream/50 font-sans">Open <span className="font-mono text-primary">xclutchint.github.io/trial</span> on your computer</p>
+                                <p className="text-sm text-cream/50 font-sans">Open <span className="font-mono text-primary">subsova.com</span> on your computer</p>
                             </div>
                             <div className="flex items-start gap-3">
                                 <div className="w-6 h-6 rounded-full bg-primary/20 flex items-center justify-center shrink-0 mt-0.5">
@@ -246,7 +246,7 @@ const Onboarding = () => {
                         {/* Link box */}
                         <div className="ob-fade bg-white/[0.03] border border-white/[0.06] rounded-xl px-5 py-4 mb-6">
                             <p className="text-[10px] font-mono text-cream/30 uppercase tracking-wider mb-1">Open on your computer</p>
-                            <p className="text-base font-mono text-primary font-bold select-all">xclutchint.github.io/trial</p>
+                            <p className="text-base font-mono text-primary font-bold select-all">subsova.com</p>
                         </div>
 
                         {/* Resend */}
