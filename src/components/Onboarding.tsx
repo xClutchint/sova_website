@@ -182,71 +182,93 @@ const Onboarding = () => {
         // Mobile: sent state
         if (sent) {
             return (
-                <div ref={containerRef} className="min-h-screen bg-[#1A1A1A] text-cream flex items-center justify-center px-6 py-12 relative overflow-x-hidden overflow-y-auto">
+                <div ref={containerRef} className="min-h-screen bg-[#1A1A1A] text-cream flex items-center justify-center px-5 py-10 relative overflow-x-hidden overflow-y-auto">
                     <div className="absolute inset-0 pointer-events-none">
                         <div className="absolute top-1/4 left-1/2 -translate-x-1/2 w-[400px] h-[400px] bg-primary/[0.05] rounded-full blur-[100px]"></div>
                     </div>
                     <div className="relative z-10 text-center max-w-sm w-full">
                         {/* Logo */}
-                        <div className="ob-fade flex items-center justify-center gap-2 mb-10">
+                        <div className="ob-fade flex items-center justify-center gap-2 mb-6">
                             <div className="w-5 h-5 rounded-full bg-primary flex items-center justify-center">
                                 <div className="w-1.5 h-1.5 rounded-full bg-cream"></div>
                             </div>
                             <span className="font-outfit font-bold text-base text-cream/60">SOVA</span>
                         </div>
 
-                        {/* Check sent icon */}
-                        <div className="ob-fade w-16 h-16 rounded-full bg-primary mx-auto mb-6 flex items-center justify-center shadow-[0_0_40px_rgba(239,68,68,0.25)]">
-                            <CheckIcon />
-                        </div>
-
-                        <h1 className="ob-fade text-2xl font-sans font-bold mb-2 tracking-tight">
+                        <h1 className="ob-fade text-2xl font-sans font-bold mb-1 tracking-tight">
                             Code sent to your <span className="font-serif italic text-primary font-medium">inbox.</span>
                         </h1>
                         <p className="ob-fade text-sm font-mono text-cream/50 mb-6">{email}</p>
 
-                        {/* Divider */}
-                        <div className="ob-fade w-12 h-px bg-white/[0.08] mx-auto mb-6"></div>
-
-                        {/* Desktop instruction */}
+                        {/* Live Install Demo Widget */}
                         <div className="ob-fade mb-6">
-                            <div className="w-14 h-14 mx-auto mb-4 rounded-xl bg-white/[0.03] border border-white/[0.06] flex items-center justify-center">
-                                <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" className="text-cream/40">
-                                    <rect x="2" y="3" width="20" height="14" rx="2" ry="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/>
-                                </svg>
+                            <div className="w-full bg-[#111] rounded-2xl border border-white/[0.06] overflow-hidden shadow-[0_20px_60px_rgba(0,0,0,0.5)]">
+                                {/* Mock monitor bezel */}
+                                <div className="bg-[#0a0a0a] px-3 py-2 flex items-center gap-1.5 border-b border-white/[0.04]">
+                                    <div className="flex gap-1">
+                                        <div className="w-1.5 h-1.5 rounded-full bg-white/10"></div>
+                                        <div className="w-1.5 h-1.5 rounded-full bg-white/10"></div>
+                                        <div className="w-1.5 h-1.5 rounded-full bg-white/10"></div>
+                                    </div>
+                                    <div className="flex-1 mx-2 h-4 rounded bg-white/[0.04] flex items-center px-2">
+                                        <span className="text-[8px] font-mono text-cream/30">subsova.com</span>
+                                    </div>
+                                </div>
+
+                                {/* Scene 1: CWS Install */}
+                                <div className="p-4 animate-[installDemo_8s_ease-in-out_infinite]">
+                                    {/* CWS Header */}
+                                    <div className="flex items-center gap-3 mb-3">
+                                        <div className="w-10 h-10 rounded-xl bg-primary/20 flex items-center justify-center shrink-0">
+                                            <div className="w-4 h-4 rounded-full bg-primary flex items-center justify-center">
+                                                <div className="w-1.5 h-1.5 rounded-full bg-white"></div>
+                                            </div>
+                                        </div>
+                                        <div className="text-left">
+                                            <p className="text-[11px] font-sans font-bold text-cream/90">SOVA</p>
+                                            <p className="text-[8px] font-mono text-cream/30">Subscription Tracker</p>
+                                        </div>
+                                    </div>
+
+                                    {/* Install button -> progress -> done */}
+                                    <div className="relative h-9 rounded-full overflow-hidden bg-primary/20 mb-3">
+                                        <div className="absolute inset-0 bg-primary animate-[installProgress_8s_ease-in-out_infinite] origin-left"></div>
+                                        <div className="absolute inset-0 flex items-center justify-center">
+                                            <span className="text-[10px] font-sans font-bold text-white z-10 animate-[installText_8s_ease-in-out_infinite]">Add to Chrome</span>
+                                        </div>
+                                    </div>
+
+                                    {/* Extension popup preview */}
+                                    <div className="animate-[popupReveal_8s_ease-in-out_infinite] opacity-0">
+                                        <div className="bg-white/[0.04] rounded-lg p-2.5 border border-white/[0.06]">
+                                            <div className="flex items-center gap-2 mb-2">
+                                                <div className="w-1.5 h-1.5 rounded-full bg-primary animate-pulse"></div>
+                                                <span className="text-[8px] font-mono text-cream/50">SOVA READY</span>
+                                            </div>
+                                            <div className="flex gap-1.5">
+                                                <div className="h-5 flex-1 bg-white/[0.04] rounded flex items-center justify-center">
+                                                    <span className="text-[7px] font-mono text-cream/30">_ _ _ _ _ _</span>
+                                                </div>
+                                            </div>
+                                            <p className="text-[7px] font-sans text-cream/30 mt-1.5">Enter your setup code</p>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
-                            <h2 className="text-lg font-sans font-bold text-cream mb-2">Now head to your desktop</h2>
-                            <p className="text-sm text-cream/40 font-sans leading-relaxed">
-                                SOVA is a Chrome extension. Install it on your desktop browser, then enter the code from your email.
-                            </p>
+                            {/* Monitor stand */}
+                            <div className="w-12 h-3 bg-[#111] mx-auto border-x border-white/[0.04]"></div>
+                            <div className="w-20 h-1 bg-[#111] mx-auto rounded-b border-x border-b border-white/[0.04]"></div>
                         </div>
 
-                        {/* Steps */}
-                        <div className="ob-fade text-left space-y-4 mb-8">
-                            <div className="flex items-start gap-3">
-                                <div className="w-6 h-6 rounded-full bg-primary/20 flex items-center justify-center shrink-0 mt-0.5">
-                                    <span className="text-[10px] font-mono font-bold text-primary">1</span>
-                                </div>
-                                <p className="text-sm text-cream/50 font-sans">Open <span className="font-mono text-primary">subsova.com</span> on your computer</p>
-                            </div>
-                            <div className="flex items-start gap-3">
-                                <div className="w-6 h-6 rounded-full bg-primary/20 flex items-center justify-center shrink-0 mt-0.5">
-                                    <span className="text-[10px] font-mono font-bold text-primary">2</span>
-                                </div>
-                                <p className="text-sm text-cream/50 font-sans">Install SOVA from the Chrome Web Store</p>
-                            </div>
-                            <div className="flex items-start gap-3">
-                                <div className="w-6 h-6 rounded-full bg-primary/20 flex items-center justify-center shrink-0 mt-0.5">
-                                    <span className="text-[10px] font-mono font-bold text-primary">3</span>
-                                </div>
-                                <p className="text-sm text-cream/50 font-sans">Enter the 6-digit code from your email</p>
-                            </div>
-                        </div>
+                        <p className="ob-fade text-base font-sans font-bold text-cream mb-1">Open on your desktop</p>
+                        <p className="ob-fade text-sm text-cream/40 font-sans leading-relaxed mb-5">
+                            Install SOVA on Chrome, then enter the code from your email.
+                        </p>
 
                         {/* Link box */}
-                        <div className="ob-fade bg-white/[0.03] border border-white/[0.06] rounded-xl px-5 py-4 mb-6">
-                            <p className="text-[10px] font-mono text-cream/30 uppercase tracking-wider mb-1">Open on your computer</p>
-                            <p className="text-base font-mono text-primary font-bold select-all">subsova.com</p>
+                        <div className="ob-fade bg-white/[0.03] border border-white/[0.06] rounded-xl px-5 py-3.5 mb-5">
+                            <p className="text-[9px] font-mono text-cream/30 uppercase tracking-wider mb-0.5">Visit on your computer</p>
+                            <p className="text-lg font-mono text-primary font-bold select-all">subsova.com</p>
                         </div>
 
                         {/* Resend */}
@@ -264,6 +286,29 @@ const Onboarding = () => {
                             )}
                         </div>
                     </div>
+
+                    {/* Keyframes for install demo */}
+                    <style dangerouslySetInnerHTML={{ __html: `
+                        @keyframes installProgress {
+                            0%, 15% { transform: scaleX(0); }
+                            30%, 45% { transform: scaleX(0.6); }
+                            50%, 100% { transform: scaleX(1); }
+                        }
+                        @keyframes installText {
+                            0%, 15% { content: "Add to Chrome"; }
+                            30%, 45% { opacity: 0.7; }
+                            50%, 100% { opacity: 1; }
+                        }
+                        @keyframes installDemo {
+                            0%, 10% { opacity: 1; }
+                            90%, 100% { opacity: 1; }
+                        }
+                        @keyframes popupReveal {
+                            0%, 55% { opacity: 0; transform: translateY(8px); }
+                            65%, 90% { opacity: 1; transform: translateY(0); }
+                            95%, 100% { opacity: 0; transform: translateY(-4px); }
+                        }
+                    `}} />
                 </div>
             );
         }
